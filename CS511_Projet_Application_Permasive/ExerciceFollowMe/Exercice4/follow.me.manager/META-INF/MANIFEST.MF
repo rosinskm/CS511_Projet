@@ -1,0 +1,94 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Manager
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-SymbolicName: follow.me.manager
+Bundle-Version: 1.0.0.qualifier
+Created-By: iPOJO 1.12.1
+Export-Package: org.example.follow.me.manager
+Import-Package: follow.me.configuration, fr.liglab.adele.icasa, fr.lig
+ lab.adele.icasa.access, fr.liglab.adele.icasa.access.command, fr.ligl
+ ab.adele.icasa.application, fr.liglab.adele.icasa.application.impl, f
+ r.liglab.adele.icasa.application.impl.command, fr.liglab.adele.icasa.
+ application.remote, fr.liglab.adele.icasa.application.remote.util, fr
+ .liglab.adele.icasa.clockservice, fr.liglab.adele.icasa.clockservice.
+ impl, fr.liglab.adele.icasa.clockservice.util, fr.liglab.adele.icasa.
+ command, fr.liglab.adele.icasa.command.handler, fr.liglab.adele.icasa
+ .commands, fr.liglab.adele.icasa.commands.impl, fr.liglab.adele.icasa
+ .common, fr.liglab.adele.icasa.common.impl, fr.liglab.adele.icasa.com
+ mon.xml.utils, fr.liglab.adele.icasa.dependency.manager.exception, fr
+ .liglab.adele.icasa.device, fr.liglab.adele.icasa.device.bathroomscal
+ e, fr.liglab.adele.icasa.device.box, fr.liglab.adele.icasa.device.but
+ ton, fr.liglab.adele.icasa.device.button.simulated, fr.liglab.adele.i
+ casa.device.doorWindow, fr.liglab.adele.icasa.device.gasSensor, fr.li
+ glab.adele.icasa.device.light, fr.liglab.adele.icasa.device.manager, 
+ fr.liglab.adele.icasa.device.motion, fr.liglab.adele.icasa.device.pow
+ er, fr.liglab.adele.icasa.device.presence, fr.liglab.adele.icasa.devi
+ ce.security, fr.liglab.adele.icasa.device.settopbox, fr.liglab.adele.
+ icasa.device.sound, fr.liglab.adele.icasa.device.sprinkler, fr.liglab
+ .adele.icasa.device.temperature, fr.liglab.adele.icasa.device.util, f
+ r.liglab.adele.icasa.exception, fr.liglab.adele.icasa.frontend.servic
+ es, fr.liglab.adele.icasa.frontend.services.rest, fr.liglab.adele.ica
+ sa.frontend.services.utils, fr.liglab.adele.icasa.listener, fr.liglab
+ .adele.icasa.location, fr.liglab.adele.icasa.location.impl, fr.liglab
+ .adele.icasa.location.util, fr.liglab.adele.icasa.remote.wisdom, fr.l
+ iglab.adele.icasa.remote.wisdom.util, fr.liglab.adele.icasa.service.l
+ ocation, fr.liglab.adele.icasa.service.preferences, fr.liglab.adele.i
+ casa.service.scheduler, fr.liglab.adele.icasa.service.zone.dimension.
+ calculator, fr.liglab.adele.icasa.service.zone.size.calculator, fr.li
+ glab.adele.icasa.simulator, fr.liglab.adele.icasa.simulator.listener,
+  fr.liglab.adele.icasa.simulator.listener.util, fr.liglab.adele.icasa
+ .simulator.remote.wisdom.util, fr.liglab.adele.icasa.simulator.script
+ .executor, fr.liglab.adele.icasa.simulator.services, org.apache.felix
+ .ipojo;version="[1.12.1,2.0.0)", org.apache.felix.ipojo.architecture;
+ version="[1.12.1,2.0.0)", org.json, org.osgi.service.cm;version=1.2, 
+ org.osgi.service.log;version=1.3
+Require-Bundle: BinaryLightFollowMe
+iPOJO-Components: instance { $component="FollowMeManager" $name="Follo
+ wMeManager" }instance { $name="follow.me.manager.command" $component=
+ "org.example.follow.me.manager.command.FollowMeManagerCommandImpl" }c
+ omponent { $classname="org.example.follow.me.manager.impl.FollowMeMan
+ agerImpl" $name="FollowMeManager" provides { $specifications="org.exa
+ mple.follow.me.manager.FollowMeAdministration" property { $field="m_a
+ dministrationService" $name="m_administrationService" $type="org.exam
+ ple.follow.me.manager.FollowMeAdministration" }}callback { $method="s
+ tart" $transition="validate" }callback { $method="stop" $transition="
+ invalidate" }requires { $optional="true" $specification="follow.me.co
+ nfiguration.FollowMeConfiguration" $field="IlluminanceGoal" }requires
+  { $optional="true" $specification="follow.me.configuration.FollowMeC
+ onfiguration" $field="EnergyGoal" }manipulation { $classname="org.exa
+ mple.follow.me.manager.impl.FollowMeManagerImpl" interface { $name="o
+ rg.example.follow.me.manager.FollowMeAdministration" }field { $name="
+ EnergyGoal" $type="follow.me.configuration.FollowMeConfiguration" }fi
+ eld { $name="IlluminanceGoal" $type="follow.me.configuration.FollowMe
+ Configuration" }field { $name="m_administrationService" $type="org.ex
+ ample.follow.me.manager.FollowMeAdministration" }method { $name="bind
+ IlluminanceGoal" $arguments="{follow.me.configuration.FollowMeConfigu
+ ration,java.util.Map}" $names="{followMeConfiguration,properties}" }m
+ ethod { $name="unbindIlluminanceGoal" $arguments="{follow.me.configur
+ ation.FollowMeConfiguration,java.util.Map}" $names="{followMeConfigur
+ ation,properties}" }method { $name="stop" }method { $name="start" }me
+ thod { $name="setIlluminancePreference" $arguments="{org.example.foll
+ ow.me.manager.IlluminanceGoal}" $names="{illuminanceGoal}" }method { 
+ $name="getIlluminancePreference" $return="org.example.follow.me.manag
+ er.IlluminanceGoal" }method { $name="getEnergyGoal" $return="org.exam
+ ple.follow.me.manager.EnergyGoal" }method { $name="setEnergySavingGoa
+ l" $arguments="{org.example.follow.me.manager.EnergyGoal}" $names="{e
+ nergyGoal}" }}}component { $name="org.example.follow.me.manager.comma
+ nd.FollowMeManagerCommandImpl" $classname="org.example.follow.me.mana
+ ger.command.FollowMeManagerCommandImpl" fr.liglab.adele.icasa.command
+ .handler:commandprovider { $namespace="followme" fr.liglab.adele.icas
+ a.command.handler:command { $method="setIlluminancePreference" }fr.li
+ glab.adele.icasa.command.handler:command { $method="getIlluminancePre
+ ference" }fr.liglab.adele.icasa.command.handler:command { $method="se
+ tEnergyPreference" }fr.liglab.adele.icasa.command.handler:command { $
+ method="getEnergyPreference" }}requires { $field="m_administrationSer
+ vice" }manipulation { $classname="org.example.follow.me.manager.comma
+ nd.FollowMeManagerCommandImpl" field { $name="m_administrationService
+ " $type="org.example.follow.me.manager.FollowMeAdministration" }metho
+ d { $name="setIlluminancePreference" $arguments="{java.lang.String}" 
+ $names="{goal}" }method { $name="getIlluminancePreference" }method { 
+ $name="setEnergyPreference" $arguments="{java.lang.String}" $names="{
+ goal}" }method { $name="getEnergyPreference" }method { $name="stop" }
+ method { $name="start" }}}
+

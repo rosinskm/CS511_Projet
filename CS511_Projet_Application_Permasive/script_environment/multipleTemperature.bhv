@@ -1,0 +1,48 @@
+<behavior startdate="27/10/2011-00:00:00" factor="1440">
+	 
+	<create-zone id="kitchen"  leftX="410" topY="370" X-Length="245" Y-Length="210" />	 
+	<add-zone-variable zoneId="kitchen" variable="Illuminance" />
+	<modify-zone-variable zoneId="kitchen" variable="Illuminance" value="0"/>
+	
+	<create-device id="Ther-A3654Q-S" type="iCasa.Thermometer" />
+	<create-device id="Heat-A4894S-S" type="iCasa.Heater" />
+	<create-device id="Cool-A7496W-S" type="iCasa.Cooler" />
+	<move-device-zone deviceId="Ther-A3654Q-S" zoneId="kitchen" />
+	<move-device-zone deviceId="Heat-A4894S-S" zoneId="kitchen" />
+	<move-device-zone deviceId="Cool-A7496W-S" zoneId="kitchen" />
+
+	<create-zone id="livingroom" leftX="410" topY="28" X-Length="245" Y-Length="350" />
+	<add-zone-variable zoneId="livingroom" variable="Illuminance" />
+	<modify-zone-variable zoneId="livingroom" variable="Illuminance" value="0"/>
+	
+	<create-device id="Ther-A3654Q-Z" type="iCasa.Thermometer" />
+	<create-device id="Heat-A4894S-Z" type="iCasa.Heater" />
+	<create-device id="Cool-A7496W-Z" type="iCasa.Cooler" />
+	<move-device-zone deviceId="Ther-A3654Q-Z" zoneId="livingroom" />
+	<move-device-zone deviceId="Heat-A4894S-Z" zoneId="livingroom" />
+	<move-device-zone deviceId="Cool-A7496W-Z" zoneId="livingroom" />
+	
+	<create-zone id="bedroom"  leftX="55" topY="370" X-Length="259" Y-Length="210" />		
+	<add-zone-variable zoneId="bedroom" variable="Illuminance" />
+	<modify-zone-variable zoneId="bedroom" variable="Illuminance" value="0"/>
+	
+	<create-device id="Ther-A3654Q-A" type="iCasa.Thermometer" />
+	<create-device id="Heat-A4894S-A" type="iCasa.Heater" />
+	<create-device id="Cool-A7496W-A" type="iCasa.Cooler" />
+	<move-device-zone deviceId="Ther-A3654Q-A" zoneId="bedroom" />
+	<move-device-zone deviceId="Heat-A4894S-A" zoneId="bedroom" />
+	<move-device-zone deviceId="Cool-A7496W-A" zoneId="bedroom" />
+	
+	<create-zone id="bathroom"  leftX="55" topY="20" X-Length="260" Y-Length="350" />	
+	<add-zone-variable zoneId="bathroom" variable="Illuminance" />
+	<modify-zone-variable zoneId="bathroom" variable="Illuminance" value="0"/>
+	
+	<create-device id="Ther-A3654Q-B" type="iCasa.Thermometer" />
+	<create-device id="Heat-A4894S-B" type="iCasa.Heater" />
+	<create-device id="Cool-A7496W-B" type="iCasa.Cooler" />
+	<move-device-zone deviceId="Ther-A3654Q-B" zoneId="bathroom" />
+	<move-device-zone deviceId="Heat-A4894S-B" zoneId="bathroom" />
+	<move-device-zone deviceId="Cool-A7496W-B" zoneId="bathroom" />
+	
+
+</behavior>

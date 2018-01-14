@@ -1,0 +1,110 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: TemperatureControllerFinal
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-SymbolicName: TemperatureControllerFinal
+Bundle-Version: 1.0.0.qualifier
+Created-By: iPOJO 1.12.1
+Import-Package: com.exercice.temperature.interfaces.configuration, fr.
+ liglab.adele.icasa, fr.liglab.adele.icasa.access, fr.liglab.adele.ica
+ sa.access.command, fr.liglab.adele.icasa.application, fr.liglab.adele
+ .icasa.application.impl, fr.liglab.adele.icasa.application.impl.comma
+ nd, fr.liglab.adele.icasa.application.remote, fr.liglab.adele.icasa.a
+ pplication.remote.util, fr.liglab.adele.icasa.clockservice, fr.liglab
+ .adele.icasa.clockservice.impl, fr.liglab.adele.icasa.clockservice.ut
+ il, fr.liglab.adele.icasa.command, fr.liglab.adele.icasa.command.hand
+ ler, fr.liglab.adele.icasa.commands, fr.liglab.adele.icasa.commands.i
+ mpl, fr.liglab.adele.icasa.common, fr.liglab.adele.icasa.common.impl,
+  fr.liglab.adele.icasa.common.xml.utils, fr.liglab.adele.icasa.depend
+ ency.manager.exception, fr.liglab.adele.icasa.device, fr.liglab.adele
+ .icasa.device.bathroomscale, fr.liglab.adele.icasa.device.box, fr.lig
+ lab.adele.icasa.device.button, fr.liglab.adele.icasa.device.button.si
+ mulated, fr.liglab.adele.icasa.device.doorWindow, fr.liglab.adele.ica
+ sa.device.gasSensor, fr.liglab.adele.icasa.device.light, fr.liglab.ad
+ ele.icasa.device.manager, fr.liglab.adele.icasa.device.motion, fr.lig
+ lab.adele.icasa.device.power, fr.liglab.adele.icasa.device.presence, 
+ fr.liglab.adele.icasa.device.security, fr.liglab.adele.icasa.device.s
+ ettopbox, fr.liglab.adele.icasa.device.sound, fr.liglab.adele.icasa.d
+ evice.sprinkler, fr.liglab.adele.icasa.device.temperature, fr.liglab.
+ adele.icasa.device.util, fr.liglab.adele.icasa.exception, fr.liglab.a
+ dele.icasa.frontend.services, fr.liglab.adele.icasa.frontend.services
+ .rest, fr.liglab.adele.icasa.frontend.services.utils, fr.liglab.adele
+ .icasa.listener, fr.liglab.adele.icasa.location, fr.liglab.adele.icas
+ a.location.impl, fr.liglab.adele.icasa.location.util, fr.liglab.adele
+ .icasa.remote.wisdom, fr.liglab.adele.icasa.remote.wisdom.util, fr.li
+ glab.adele.icasa.service.location, fr.liglab.adele.icasa.service.pref
+ erences, fr.liglab.adele.icasa.service.scheduler, fr.liglab.adele.ica
+ sa.service.zone.dimension.calculator, fr.liglab.adele.icasa.service.z
+ one.size.calculator, fr.liglab.adele.icasa.simulator, fr.liglab.adele
+ .icasa.simulator.listener, fr.liglab.adele.icasa.simulator.listener.u
+ til, fr.liglab.adele.icasa.simulator.remote.wisdom.util, fr.liglab.ad
+ ele.icasa.simulator.script.executor, fr.liglab.adele.icasa.simulator.
+ services, org.apache.felix.ipojo;version="[1.12.1,2.0.0)", org.apache
+ .felix.ipojo.architecture;version="[1.12.1,2.0.0)", org.json, org.osg
+ i.service.cm;version=1.2, org.osgi.service.log;version=1.3
+iPOJO-Components: instance { $component="TemperatureController" $name=
+ "TemperatureController1" }component { $classname="com.exercice.temper
+ ature.controller.TemperatureControllerImpl" $name="TemperatureControl
+ ler" requires { $aggregate="true" $optional="true" $specification="fr
+ .liglab.adele.icasa.device.temperature.Thermometer" $field="thermomet
+ ers" callback { $method="bindThermometer" $type="bind" }callback { $m
+ ethod="unbindThermometer" $type="unbind" }}requires { $aggregate="tru
+ e" $optional="true" $specification="fr.liglab.adele.icasa.device.temp
+ erature.Cooler" $field="coolers" callback { $method="bindCooler" $typ
+ e="bind" }callback { $method="unbindCooler" $type="unbind" }}requires
+  { $aggregate="true" $optional="true" $specification="fr.liglab.adele
+ .icasa.device.temperature.Heater" $field="heaters" callback { $method
+ ="bindHeater" $type="bind" }callback { $method="unbindHeater" $type="
+ unbind" }}callback { $method="start" $transition="validate" }callback
+  { $method="stop" $transition="invalidate" }provides { $specification
+ s="fr.liglab.adele.icasa.service.scheduler.PeriodicRunnable" }provide
+ s { $specifications="com.exercice.temperature.interfaces.configuratio
+ n.TemperatureConfiguration" }manipulation { $classname="com.exercice.
+ temperature.controller.TemperatureControllerImpl" interface { $name="
+ fr.liglab.adele.icasa.device.DeviceListener" }interface { $name="fr.l
+ iglab.adele.icasa.service.scheduler.PeriodicRunnable" }interface { $n
+ ame="com.exercice.temperature.interfaces.configuration.TemperatureCon
+ figuration" }field { $name="coolers" $type="fr.liglab.adele.icasa.dev
+ ice.temperature.Cooler[]" }field { $name="heaters" $type="fr.liglab.a
+ dele.icasa.device.temperature.Heater[]" }field { $name="targetTempera
+ tureBathroom" $type="java.lang.Double" }field { $name="targetTemperat
+ ureBedroom" $type="java.lang.Double" }field { $name="targetTemperatur
+ eKitchen" $type="java.lang.Double" }field { $name="targetTemperatureL
+ ivingroom" $type="java.lang.Double" }field { $name="thermometers" $ty
+ pe="fr.liglab.adele.icasa.device.temperature.Thermometer[]" }method {
+  $name="run" }method { $name="findTemperatureInRoom" $return="java.la
+ ng.Double" $arguments="{java.lang.String}" $names="{room}" }method { 
+ $name="findCoolersInRoom" $return="java.util.List" $arguments="{java.
+ lang.String}" $names="{room}" }method { $name="findHeatersInRoom" $re
+ turn="java.util.List" $arguments="{java.lang.String}" $names="{room}"
+  }method { $name="getPeriod" $return="long" }method { $name="getUnit"
+  $return="java.util.concurrent.TimeUnit" }method { $name="bindCooler"
+  $arguments="{fr.liglab.adele.icasa.device.temperature.Cooler,java.ut
+ il.Map}" $names="{cooler,properties}" }method { $name="unbindCooler" 
+ $arguments="{fr.liglab.adele.icasa.device.temperature.Cooler,java.uti
+ l.Map}" $names="{cooler,properties}" }method { $name="bindHeater" $ar
+ guments="{fr.liglab.adele.icasa.device.temperature.Heater,java.util.M
+ ap}" $names="{heater,properties}" }method { $name="unbindHeater" $arg
+ uments="{fr.liglab.adele.icasa.device.temperature.Heater,java.util.Ma
+ p}" $names="{heater,properties}" }method { $name="bindThermometer" $a
+ rguments="{fr.liglab.adele.icasa.device.temperature.Thermometer,java.
+ util.Map}" $names="{thermometer,properties}" }method { $name="unbindT
+ hermometer" $arguments="{fr.liglab.adele.icasa.device.temperature.The
+ rmometer,java.util.Map}" $names="{thermometer,properties}" }method { 
+ $name="stop" }method { $name="start" }method { $name="setTargetedTemp
+ erature" $arguments="{java.lang.String,java.lang.Double}" $names="{ta
+ rgetedRoom,temperature}" }method { $name="getTargetedTemperature" $re
+ turn="java.lang.Double" $arguments="{java.lang.String}" $names="{room
+ }" }method { $name="deviceAdded" $arguments="{fr.liglab.adele.icasa.d
+ evice.GenericDevice}" $names="{arg0}" }method { $name="deviceEvent" $
+ arguments="{fr.liglab.adele.icasa.device.GenericDevice,java.lang.Obje
+ ct}" $names="{arg0,arg1}" }method { $name="devicePropertyAdded" $argu
+ ments="{fr.liglab.adele.icasa.device.GenericDevice,java.lang.String}"
+  $names="{arg0,arg1}" }method { $name="devicePropertyModified" $argum
+ ents="{fr.liglab.adele.icasa.device.GenericDevice,java.lang.String,ja
+ va.lang.Object,java.lang.Object}" $names="{device,nameProperty,oldVal
+ ue,newValue}" }method { $name="devicePropertyRemoved" $arguments="{fr
+ .liglab.adele.icasa.device.GenericDevice,java.lang.String}" $names="{
+ arg0,arg1}" }method { $name="deviceRemoved" $arguments="{fr.liglab.ad
+ ele.icasa.device.GenericDevice}" $names="{arg0}" }}}
+

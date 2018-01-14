@@ -1,0 +1,65 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: TemperatureCommandFinal
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-SymbolicName: TemperatureCommandFinal
+Bundle-Version: 1.0.0.qualifier
+Created-By: iPOJO 1.12.1
+Import-Package: com.exercices.temperature.interfaces.manager, fr.ligla
+ b.adele.icasa, fr.liglab.adele.icasa.access, fr.liglab.adele.icasa.ac
+ cess.command, fr.liglab.adele.icasa.application, fr.liglab.adele.icas
+ a.application.impl, fr.liglab.adele.icasa.application.impl.command, f
+ r.liglab.adele.icasa.application.remote, fr.liglab.adele.icasa.applic
+ ation.remote.util, fr.liglab.adele.icasa.clockservice, fr.liglab.adel
+ e.icasa.clockservice.impl, fr.liglab.adele.icasa.clockservice.util, f
+ r.liglab.adele.icasa.command, fr.liglab.adele.icasa.command.handler, 
+ fr.liglab.adele.icasa.commands, fr.liglab.adele.icasa.commands.impl, 
+ fr.liglab.adele.icasa.common, fr.liglab.adele.icasa.common.impl, fr.l
+ iglab.adele.icasa.common.xml.utils, fr.liglab.adele.icasa.dependency.
+ manager.exception, fr.liglab.adele.icasa.device, fr.liglab.adele.icas
+ a.device.bathroomscale, fr.liglab.adele.icasa.device.box, fr.liglab.a
+ dele.icasa.device.button, fr.liglab.adele.icasa.device.button.simulat
+ ed, fr.liglab.adele.icasa.device.doorWindow, fr.liglab.adele.icasa.de
+ vice.gasSensor, fr.liglab.adele.icasa.device.light, fr.liglab.adele.i
+ casa.device.manager, fr.liglab.adele.icasa.device.motion, fr.liglab.a
+ dele.icasa.device.power, fr.liglab.adele.icasa.device.presence, fr.li
+ glab.adele.icasa.device.security, fr.liglab.adele.icasa.device.settop
+ box, fr.liglab.adele.icasa.device.sound, fr.liglab.adele.icasa.device
+ .sprinkler, fr.liglab.adele.icasa.device.temperature, fr.liglab.adele
+ .icasa.device.util, fr.liglab.adele.icasa.exception, fr.liglab.adele.
+ icasa.frontend.services, fr.liglab.adele.icasa.frontend.services.rest
+ , fr.liglab.adele.icasa.frontend.services.utils, fr.liglab.adele.icas
+ a.listener, fr.liglab.adele.icasa.location, fr.liglab.adele.icasa.loc
+ ation.impl, fr.liglab.adele.icasa.location.util, fr.liglab.adele.icas
+ a.remote.wisdom, fr.liglab.adele.icasa.remote.wisdom.util, fr.liglab.
+ adele.icasa.service.location, fr.liglab.adele.icasa.service.preferenc
+ es, fr.liglab.adele.icasa.service.scheduler, fr.liglab.adele.icasa.se
+ rvice.zone.dimension.calculator, fr.liglab.adele.icasa.service.zone.s
+ ize.calculator, fr.liglab.adele.icasa.simulator, fr.liglab.adele.icas
+ a.simulator.listener, fr.liglab.adele.icasa.simulator.listener.util, 
+ fr.liglab.adele.icasa.simulator.remote.wisdom.util, fr.liglab.adele.i
+ casa.simulator.script.executor, fr.liglab.adele.icasa.simulator.servi
+ ces, org.apache.felix.ipojo;version="[1.12.1,2.0.0)", org.apache.feli
+ x.ipojo.architecture;version="[1.12.1,2.0.0)", org.json, org.osgi.ser
+ vice.cm;version=1.2, org.osgi.service.log;version=1.3
+iPOJO-Components: instance { $name="temperature.administration.command
+ " $component="com.exercice.temperature.command.TemperatureCommandImpl
+ " }component { $name="com.exercice.temperature.command.TemperatureCom
+ mandImpl" $classname="com.exercice.temperature.command.TemperatureCom
+ mandImpl" fr.liglab.adele.icasa.command.handler:commandprovider { $na
+ mespace="temperature" fr.liglab.adele.icasa.command.handler:command {
+  $method="tempTooHigh" }fr.liglab.adele.icasa.command.handler:command
+  { $method="tempTooLow" }fr.liglab.adele.icasa.command.handler:comman
+ d { $method="getTempMin" }fr.liglab.adele.icasa.command.handler:comma
+ nd { $method="getTemperatureMax" }}requires { $field="m_administratio
+ nService" }callback { $transition="validate" $method="start" }callbac
+ k { $transition="invalidate" $method="stop" }manipulation { $classnam
+ e="com.exercice.temperature.command.TemperatureCommandImpl" field { $
+ name="m_administrationService" $type="com.exercices.temperature.inter
+ faces.manager.TemperatureManagerAdministration" }method { $name="temp
+ TooHigh" $arguments="{java.lang.String}" $names="{room}" }method { $n
+ ame="tempTooLow" $arguments="{java.lang.String}" $names="{room}" }met
+ hod { $name="getTempMin" $arguments="{java.lang.String}" $names="{roo
+ m}" }method { $name="getTemperatureMax" $arguments="{java.lang.String
+ }" $names="{room}" }method { $name="start" }method { $name="stop" }}}
+
